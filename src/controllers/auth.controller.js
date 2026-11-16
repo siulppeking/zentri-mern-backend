@@ -65,7 +65,7 @@ const loginUser = async (req, res) => {
         // Set the JWT token in a cookie
         res.cookie('zentri-jwt', token, {
             httpOnly: true,
-            secure: false, // Set to true in production
+            secure: true, // Set to true in production
             sameSite: 'strict',
             maxAge: 3600000, // 1 hour
         });
@@ -86,14 +86,26 @@ const loginUser = async (req, res) => {
 const logoutUser = (req, res) => {
     res.clearCookie('zentri-jwt', {
         httpOnly: true,
-        secure: false, // Set to true in production
+        secure: true, // Set to true in production
         sameSite: 'strict',
     });
     res.status(200).json({ message: 'User logged out successfully' });
 };
 
+const verifyUser = (req, res) => {
+
+    const user = {
+        email: req.user.email,
+        firstname: req.user.firstname,
+        lastname: req.user.lastname,
+    }
+
+    res.status(200).json({ message: 'Token is valid', user });
+}
+
 module.exports = {
     registerUser,
     loginUser,
-    logoutUser
+    logoutUser,
+    verifyUser
 };

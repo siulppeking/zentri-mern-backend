@@ -2,7 +2,6 @@ const User = require('../models/user.model');
 const { verifyToken } = require('../utils/jwt.util');
 
 const authMiddleware = async (req, res, next) => {
-    // cookie 
     const token = req.cookies['zentri-jwt'];
     if (!token) {
         return res.status(401).json({ message: 'Access denied. No token provided.' });
