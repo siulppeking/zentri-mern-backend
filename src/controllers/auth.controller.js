@@ -79,8 +79,8 @@ const loginUser = async (req, res) => {
 
         console.log('LOGIN COOKIE DEBUG:', {
             nodeEnv: process.env.NODE_ENV,
-            secure: isProduction,
-            sameSite: isProduction ? 'none' : 'strict',
+            secure: isProd,
+            sameSite: isProd ? 'none' : 'strict',
             cookieConfigured: Boolean(setCookie),
             setCookieExists: setCookie !== undefined
         });
