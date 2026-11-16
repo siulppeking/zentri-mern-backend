@@ -25,7 +25,7 @@ const registerUser = async (req, res) => {
 
         res.cookie('zentri-jwt', token, {
             httpOnly: true,
-            secure: true, // Set to true in production
+            secure: false, // Set to true in production
             sameSite: "none",
             maxAge: 3600000, // 1 hour
             path: "/"
@@ -66,7 +66,7 @@ const loginUser = async (req, res) => {
         // Set the JWT token in a cookie
         res.cookie('zentri-jwt', token, {
             httpOnly: true,
-            secure: true, // Set to true in production
+            secure: false, // Set to true in production
             sameSite: "none",
             maxAge: 3600000, // 1 hour
             path: "/"
@@ -88,7 +88,7 @@ const loginUser = async (req, res) => {
 const logoutUser = (req, res) => {
     res.clearCookie('zentri-jwt', {
         httpOnly: true,
-        secure: true, // Set to true in production
+        secure: false, // Set to true in production
         sameSite: "none",
         maxAge: 0, // Expire the cookie immediately
         path: "/"
