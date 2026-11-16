@@ -25,7 +25,7 @@ const registerUser = async (req, res) => {
 
         res.cookie('zentri-jwt', token, {
             httpOnly: true,
-            secure: false, // Set to true in production
+            secure: true, // Set to true in production
             sameSite: 'strict',
             maxAge: 3600000, // 1 hour
         });
