@@ -71,6 +71,7 @@ const loginUser = async (req, res) => {
             httpOnly: true,
             //secure: isProd, // Set to 'true' in production | 'false' in development
             //sameSite: isProd ? 'none' : 'strict', // Set to "none" in production | "strict" in development
+            sameSite: 'none',
             maxAge: 3600000, // 1 hour
             path: "/"
         });
