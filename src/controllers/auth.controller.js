@@ -75,15 +75,14 @@ const loginUser = async (req, res) => {
             path: "/"
         });
 
+        const setCookie = res.getHeader('Set-Cookie');
 
         console.log('LOGIN COOKIE DEBUG:', {
             nodeEnv: process.env.NODE_ENV,
-            secure: isProd,
-            sameSite: isProd ? 'none' : 'strict',
-            cookieConfigured: true,
-            setCookieHeader: res.getHeader('Set-Cookie')?.map(cookie =>
-                cookie.replace(/=([^;]+)/, '=<REDACTED>')
-            )
+            secure: isProduction,
+            sameSite: isProduction ? 'none' : 'strict',
+            cookieConfigured: Boolean(setCookie),
+            setCookieExists: setCookie !== undefined
         });
 
         const userResponse = {
