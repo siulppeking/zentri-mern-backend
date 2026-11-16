@@ -28,6 +28,9 @@ const createTask = async (req, res) => {
         
         const task = new Task({ title, description, userId });
         await task.save();
+        
+        const email = req.user.email;
+        console.log('Task created for user:', email, 'Task title:', task.title, 'Task description:', task.description, 'Task ID:', task._id);
 
         const taskWithUserId = {
             id: task._id,
