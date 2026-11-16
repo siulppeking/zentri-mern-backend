@@ -11,8 +11,8 @@ const taskRouter = require('./routers/task.router');
 const app = express();
 
 app.use(cors({
-    // origin: 'http://localhost:5173',
-    origin: ['http://localhost:5173', 'https://zentri-mern.netlify.app'],
+    origin: 'http://localhost:5173',
+    //origin: 'https://zentri-mern.netlify.app',
     credentials: true,
 }));
 
