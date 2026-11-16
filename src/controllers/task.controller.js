@@ -29,18 +29,11 @@ const createTask = async (req, res) => {
         const task = new Task({ title, description, userId });
         await task.save();
 
-        const taskLog = {
-            email: req.user.email,
-            title: task.title,
-            description: task.description,
-            createdAt: task.createdAt
-        };
-        console.log('Task created:', taskLog);
-
         const taskWithUserId = {
             id: task._id,
             title: task.title,
-            description: task.description
+            description: task.description,
+            createdAt: task.createdAt
         };
         res.status(201).json(taskWithUserId);
     } catch (error) {
@@ -89,7 +82,8 @@ const updateTask = async (req, res) => {
         const taskWithUserId = {
             id: task._id,
             title: task.title,
-            description: task.description
+            description: task.description,
+            createdAt: task.createdAt
         };
         res.status(200).json(taskWithUserId);
     } catch (error) {
