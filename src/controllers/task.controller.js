@@ -25,12 +25,17 @@ const createTask = async (req, res) => {
         if (existingTask) {
             return res.status(409).json({ message: 'Task with this title already exists' });
         }
-        
+
         const task = new Task({ title, description, userId });
         await task.save();
-        
-        const email = req.user.email;
-        console.log('Task created for user:', email, 'Task title:', task.title, 'Task description:', task.description, 'Task ID:', task._id);
+
+        const taskLog = {
+            email: req.user.email,
+            title: task.title,
+            description: task.description,
+            createdAt: task.createdAt
+        };
+        console.log('Task created:', taskLog);
 
         const taskWithUserId = {
             id: task._id,
