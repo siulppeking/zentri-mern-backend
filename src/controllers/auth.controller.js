@@ -69,16 +69,15 @@ const loginUser = async (req, res) => {
         const isProd = process.env.NODE_ENV === 'prod';
         res.cookie('zentri-jwt', token, {
             httpOnly: true,
-            //secure: isProd, // Set to 'true' in production | 'false' in development
-            //sameSite: isProd ? 'none' : 'strict', // Set to "none" in production | "strict" in development
-            sameSite: 'none',
+            secure: isProd, // Set to 'true' in production | 'false' in development
+            sameSite: isProd ? 'none' : 'strict', // Set to "none" in production | "strict" in development
             maxAge: 3600000, // 1 hour
             path: "/"
         });
 
         const setCookie = res.getHeader('Set-Cookie');
 
-        console.log('LOGIN COOKIE DEBUG:', {
+        console.log('LOGIN COOKIE DEBUG 222222:', {
             nodeEnv: process.env.NODE_ENV,
             secure: isProd,
             sameSite: isProd ? 'none' : 'strict',
