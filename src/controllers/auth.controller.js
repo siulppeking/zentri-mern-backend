@@ -74,17 +74,7 @@ const loginUser = async (req, res) => {
             maxAge: 3600000, // 1 hour
             path: "/"
         });
-
-        const setCookie = res.getHeader('Set-Cookie');
-
-        console.log('LOGIN COOKIE DEBUG 222222:', {
-            nodeEnv: process.env.NODE_ENV,
-            secure: isProd,
-            sameSite: isProd ? 'none' : 'strict',
-            cookieConfigured: Boolean(setCookie),
-            setCookieExists: setCookie !== undefined
-        });
-
+        
         const userResponse = {
             firstname: user.firstname,
             lastname: user.lastname,
