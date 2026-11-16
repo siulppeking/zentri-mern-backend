@@ -3,8 +3,6 @@ const { verifyToken } = require('../utils/jwt.util');
 
 const authMiddleware = async (req, res, next) => {
     const token = req.cookies['zentri-jwt'];
-    console.log({token});
-
     if (!token) {
         return res.status(401).json({ message: 'Access denied. No token provided.' });
     }
@@ -15,6 +13,9 @@ const authMiddleware = async (req, res, next) => {
         if (!user) {
             return res.status(401).json({ message: 'Access denied. User not found.' });
         }
+
+        console.log(user);
+        
         req.user = user;
         next();
     } catch (error) {
