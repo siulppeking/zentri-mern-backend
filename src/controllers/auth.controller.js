@@ -27,8 +27,8 @@ const registerUser = async (req, res) => {
 
         res.cookie('zentri-jwt', token, {
             httpOnly: true,
-            //secure: isProd, // Set to 'true' in production | 'false' in development
-            //sameSite: isProd ? 'none' : 'strict', // Set to "none" in production | "strict" in development
+            secure: isProd, // Set to 'true' in production | 'false' in development
+            sameSite: isProd ? 'none' : 'strict', // Set to "none" in production | "strict" in development
             maxAge: 3600000, // 1 hour
             path: "/"
         });
@@ -93,8 +93,8 @@ const logoutUser = (req, res) => {
     const isProd = process.env.NODE_ENV === 'prod';
     res.clearCookie('zentri-jwt', {
         httpOnly: true,
-        //secure: isProd, // Set to 'true' in production | 'false' in development
-        //sameSite: isProd ? 'none' : 'strict', // Set to "none" in production | "strict" in development
+        secure: isProd, // Set to 'true' in production | 'false' in development
+        sameSite: isProd ? 'none' : 'strict', // Set to "none" in production | "strict" in development
         maxAge: 0,
         path: "/"
     });
